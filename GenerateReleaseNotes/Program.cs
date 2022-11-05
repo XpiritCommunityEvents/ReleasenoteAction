@@ -32,7 +32,7 @@ parser.WithNotParsed(
     errors =>
     {
       Console.WriteLine(errors.ToString());
-        Environment.Exit(2);
+      Environment.Exit(2);
     });
 
 await parser.WithParsedAsync(options => StartEnvironmentDump(options, host));
