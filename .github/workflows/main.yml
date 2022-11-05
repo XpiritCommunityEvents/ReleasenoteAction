@@ -9,7 +9,7 @@ jobs:
       - name: generate releasenotes
         uses: XpiritCommunityEvents/ReleasenoteAction@main
         with:
-            environment: ${{ env }}
+            environment: ${{ toJSON(github) }}
             branch: refs/main
     
     
