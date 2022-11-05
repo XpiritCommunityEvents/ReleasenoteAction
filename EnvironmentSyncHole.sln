@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActionDefinition", "ActionDefinition", "{1AF78FC2-F687-437D-9222-87EFC8E119EC}"
 	ProjectSection(SolutionItems) = preProject
 		action.yml = action.yml
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Global
