@@ -1,0 +1,26 @@
+name: 'Generate Releasenotes'
+description: 'Generates release otes based on the last list of commit messages'
+branding:
+  icon: activity
+  color: orange
+inputs:
+  environment:
+    description:
+      'Reference to the environment data so we can generate release notes: Assign from ${{ toJSON(env) }}".'
+    required: true
+  branch:
+    description:
+      'The branch name. Assign from github.ref. Example, "refs/heads/main".'
+    required: true
+outputs:
+  releasenotes-markdown:
+    description:
+      'string containing the markdown with releasenotes.'
+runs:
+  using: 'docker'
+  image: 'marcelv/ReleaseNotes'
+  args:
+  - '-e'
+  - ${{ inputs.environment }}
+  - '-b'
+  - ${{ inputs.branch }}
