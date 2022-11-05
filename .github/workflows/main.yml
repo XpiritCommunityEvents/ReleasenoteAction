@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:
+  
+jobs:
+  Test_Action:
+    name: test action
+    runs-on: ubuntu-18.04
+    steps:
+      - name: generate releasenotes
+        uses: XpiritCommunityEvents/ReleasenoteAction@main
+        with:
+            environment: ${{ env }}
+            branch: refs/main
+    
+    
