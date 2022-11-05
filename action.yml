@@ -6,7 +6,7 @@ branding:
 inputs:
   environment:
     description:
-      'Reference to the environment data so we can generate release notes: Assign from ${{ toJSON(env) }}".'
+      'Reference to the environment data so we can generate release notes: Assign from e.g. github context.'
     required: true
   branch:
     description:
