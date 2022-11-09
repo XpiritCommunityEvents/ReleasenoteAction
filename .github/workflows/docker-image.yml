@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: marcelv/releasenotes:latest
+          tags: marcelv/releasenotes:${{ github.run_id }}
