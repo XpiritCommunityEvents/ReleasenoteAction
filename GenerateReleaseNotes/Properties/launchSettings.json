@@ -1,7 +1,8 @@
 {
   "profiles": {
     "GenerateReleaseNotes": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-e \"{ blabla\" -b \"ref/main\""
     },
     "Docker (1)": {
       "commandName": "Docker"
