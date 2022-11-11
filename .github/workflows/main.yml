@@ -20,5 +20,6 @@ jobs:
         with:
          # Artifact name
           name: releasenotes.md
+          path: ${{ github.workspace }}
     
     
