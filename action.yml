@@ -18,7 +18,7 @@ outputs:
       'string containing the markdown with releasenotes.'
 runs:
   using: 'docker'
-  image: 'docker://marcelv/releasenotes:3441439804'
+  image: 'docker://marcelv/releasenotes:3441678750'
   args:
   - '-e'
   - ${{ inputs.environment }}
