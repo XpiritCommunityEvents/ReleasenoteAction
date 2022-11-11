@@ -2,7 +2,7 @@
   "profiles": {
     "GenerateReleaseNotes": {
       "commandName": "Project",
-      "commandLineArgs": "-e \"{ blabla\" -b \"ref/main\""
+      "commandLineArgs": "-e \"somedata\" -o \"XpiritCommunityEvents\" -r \"ReleasenoteAction\" -l \"releasenote\" -t \"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\""
     },
     "Docker (1)": {
       "commandName": "Docker"

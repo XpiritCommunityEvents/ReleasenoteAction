@@ -22,5 +22,9 @@ runs:
   args:
   - '-e'
   - ${{ inputs.environment }}
-  - '-b'
-  - ${{ inputs.branch }}
+  - '-o'
+  - ${{ inputs.owner }}
+  - '-r'
+  - ${{ inputs.repo }}
+  - '-t'
+  - ${{ inputs.github_token }}

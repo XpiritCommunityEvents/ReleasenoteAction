@@ -4,7 +4,10 @@ namespace DotNet.GitHubAction;
 
 public class ActionInputs
 {
-    string _branchName = null!;
+    private string _Ownername;
+    private string _Labelname;
+    private string _Reponame;
+    private string _Accesstoken;
 
     public ActionInputs()
     {
@@ -16,15 +19,41 @@ public class ActionInputs
         HelpText = "Reference to the environment data so we can generate release notes: . Assign from '${{ toJSON(env) }}'.")]
     public string Environment { get; set; } = null!;
 
-    [Option('b', "branch",
+    [Option('t', "token",
         Required = true,
-        HelpText = "The branch name, for example: \"refs/heads/main\". Assign from '${{ github.ref }}'.")]
-    public string Branch
+        HelpText = "Github token used to authenticate against API")]
+    public string AccessToken
     {
-        get => _branchName;
-        set => ParseAndAssign(value, str => _branchName = str);
+        get => _Accesstoken;
+        set => ParseAndAssign(value, str => _Accesstoken = str);
     }
 
+    [Option('o', "ownername",
+        Required = true,
+        HelpText = "Owner of the repo, used to retrieve the issues we use for releasenotes")]
+    public string Ownername
+    {
+        get => _Ownername;
+        set => ParseAndAssign(value, str => _Ownername = str);
+    }
+
+    [Option('l', "labelname",
+        Required = true,
+        HelpText = "label name used at issues we want to retrieve as releasenotes")]
+    public string Labelname
+    {
+        get => _Labelname;
+        set => ParseAndAssign(value, str => _Labelname = str);
+    }
+
+    [Option('r', "reponame",
+        Required = true,
+        HelpText = "Name of the repo, used to pull the issues from")]
+    public string Reponame
+    {
+        get => _Reponame;
+        set => ParseAndAssign(value, str => _Reponame = str);
+    }
 
     static void ParseAndAssign(string? value, Action<string> assign)
     {
