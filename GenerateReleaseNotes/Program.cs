@@ -40,6 +40,8 @@ static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
     }
     //now save to output file
     File.WriteAllText(inputs.Outputfile, markdowndoc);
+    Console.WriteLine($"output file written:{Environment.CurrentDirectory}{inputs.Outputfile}");
+
     Console.WriteLine($"generated file with following contents \n{markdowndoc}");
     Console.WriteLine($"processing release notes.... done");
 
