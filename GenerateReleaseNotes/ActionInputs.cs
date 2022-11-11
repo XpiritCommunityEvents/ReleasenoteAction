@@ -25,6 +25,7 @@ public class ActionInputs
         set => ParseAndAssign(value, str => _branchName = str);
     }
 
+
     static void ParseAndAssign(string? value, Action<string> assign)
     {
         if (value is { Length: > 0 } && assign is not null)

