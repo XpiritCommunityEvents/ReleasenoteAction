@@ -13,5 +13,6 @@ jobs:
             owner: XpiritCommunityEvents
             repo: ReleasenoteAction
             github_token: ${{ github.token }}
+            labelname: releasenote
     
     
