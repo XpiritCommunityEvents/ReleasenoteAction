@@ -30,5 +30,5 @@ runs:
   - ${{ inputs.github_token }}
   - '-l'
   - ${{ inputs.labelname }}
-  - 'f'
+  - '-f'
   - ${{ inputs.markdownfile}}
