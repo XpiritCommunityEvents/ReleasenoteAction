@@ -8,17 +8,32 @@ inputs:
     description:
       'Reference to the environment data so we can generate release notes: Assign from e.g. github context.'
     required: true
-  branch:
+  owner:
     description:
-      'The branch name. Assign from github.ref. Example, "refs/heads/main".'
+      'the owner of the repo, normaly organization name".'
     required: true
+  repo:
+    description:
+      'name of the repo, where we retrieve the issues we dump aas releasenotes".'
+    required: true
+  labelname:
+    description:
+      'name of the label to filter issues we want to use for releasenotes.'
+    required: true
+  github_token:
+    description:
+      'token that can be used to call the github API".'
+    required: true
+  markdownfile:
+    description:
+      'name of the file we generate that contians the releasenotes'
 outputs:
   releasenotes-markdown:
     description:
       'string containing the markdown with releasenotes.'
 runs:
   using: 'docker'
-  image: 'docker://marcelv/releasenotes:3443509906'
+  image: 'docker://marcelv/releasenotes:3443581387'
   args:
   - '-e'
   - ${{ inputs.environment }}
