@@ -14,5 +14,11 @@ jobs:
             repo: ReleasenoteAction
             github_token: ${{ github.token }}
             labelname: releasenote
+            markdownfile: releasenotes.md
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+         # Artifact name
+          name: releasenotes.md
     
     
