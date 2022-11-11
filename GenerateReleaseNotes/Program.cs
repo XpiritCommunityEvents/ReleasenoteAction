@@ -40,6 +40,11 @@ static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
     }
     //now save to output file
     File.WriteAllText(inputs.Outputfile, markdowndoc);
+
+    // also write it to the $GITHUB_STEP_SUMMARY file so it will show up in the results
+ 
+    File.WriteAllText(Environment.GetEnvironmentVariable("GITHUB_STEP_SUMMARY"), markdowndoc);
+
     Console.WriteLine($"output file written:{Environment.CurrentDirectory}{inputs.Outputfile}");
 
     Console.WriteLine($"generated file with following contents \n{markdowndoc}");
