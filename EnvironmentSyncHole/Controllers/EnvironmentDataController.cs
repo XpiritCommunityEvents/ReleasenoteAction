@@ -18,7 +18,7 @@ namespace EnvironmentSinkHole.Controllers
         }
 
         [HttpPost(Name = "DumpEnvironment")]
-        public async Task<bool> Post(string jsonData)
+        public async Task<bool> Post([FromBody]string jsonData)
         {
             await repo.AddEnvironmentData(jsonData);
             return await Task.FromResult(true);
