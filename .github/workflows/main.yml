@@ -10,6 +10,8 @@ jobs:
         uses: XpiritCommunityEvents/ReleasenoteAction@main
         with:
             environment: ${{ toJSON(github) }}
-            branch: refs/main
+            owner: XpiritCommunityEvents
+            repo: ReleasenoteAction
+            github_token: ${{ github.token }}
     
     
