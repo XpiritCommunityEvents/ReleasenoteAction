@@ -28,3 +28,5 @@ runs:
   - ${{ inputs.repo }}
   - '-t'
   - ${{ inputs.github_token }}
+  - 'f'
+  - ${{ inputs.markdownfile}}

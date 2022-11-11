@@ -8,6 +8,7 @@ public class ActionInputs
     private string _Labelname;
     private string _Reponame;
     private string _Accesstoken;
+    private string _Outputfile;
 
     public ActionInputs()
     {
@@ -54,6 +55,15 @@ public class ActionInputs
         get => _Reponame;
         set => ParseAndAssign(value, str => _Reponame = str);
     }
+    [Option('f', "markdownfile",
+     Required = true,
+     HelpText = "name of the markdownfile to create")]
+    public string Outputfile
+    {
+        get => _Outputfile;
+        set => ParseAndAssign(value, str => _Outputfile = str);
+    }
+    
 
     static void ParseAndAssign(string? value, Action<string> assign)
     {
